@@ -1,67 +1,65 @@
 // =========================================
-//  BASTEN GAMING - GOLDHEN LOADER (FINAL)
-//  Compatible: FW 5.05 – 11.00 (PsFree / Mira / HEN)
-//  Auto-load GoldHEN dari root GitHub Pages
-//  © 2025 Basten Gaming
+//  BASTEN GAMING — GOLDHEN JS LOADER TEMPLATE
+//  Mode: Offline Cache (NO Binloader)
+//  Compatible: FW 5.05 – 12.02
+//  Payload default: /goldhen.bin  (root GitHub Pages)
 // =========================================
 
-// Fungsi utama load payload
-function loadGoldhen(customPath) {
-    // Default path (root repo GitHub Pages)
-    var payloadPath = customPath || "/goldhen.bin";
+(function () {
+    "use strict";
 
-    alert("Memuat GoldHEN 2.4b18.6...\nMohon tunggu 2–3 detik.");
+    // Default payload path (root GitHub Pages)
+    var DEFAULT_PAYLOAD = "/goldhen.bin";
 
-    fetch(payloadPath, { cache: "no-store" })
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("HTTP " + response.status);
-            }
-            return response.arrayBuffer();
-        })
-        .then(function (buffer) {
-            // Convert ke uint8 array
-            var payload = new Uint8Array(buffer);
+    // Public function dipanggil dari HTML:
+    // <button onclick="loadGoldhen()">GoldHEN</button>
+    window.loadGoldhen = function (customPath) {
+        var path = customPath || DEFAULT_PAYLOAD;
 
-            // Kirim ke PS4 exploit sender / binloader
-            sendPayloadToPS4(payload);
+        alert("Memuat GoldHEN...\nMohon tunggu 1–2 detik.");
 
-            alert("Payload GoldHEN terkirim!\nTunggu PS4 menampilkan notifikasi.");
-        })
-        .catch(function (err) {
-            alert("Gagal memuat GoldHEN: " + err.message);
-        });
-}
+        fetch(path, { cache: "no-store" })
+            .then(function (res) {
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                return res.arrayBuffer();
+            })
+            .then(function (buf) {
+                var payload = new Uint8Array(buf);
+                console.log("[LOADER] Payload OK, size:", payload.length);
 
-// --------------------------------------------------
-//  Fungsi pengirim payload ke BINLOADER PS4
-//  (PS4 listening di port 9020 untuk binpayload)
-// --------------------------------------------------
-function sendPayloadToPS4(payload) {
-    var ip = prompt("Masukkan IP PS4 (contoh: 192.168.1.20)", "");
-
-    if (!ip) {
-        alert("IP PS4 tidak valid.");
-        return;
-    }
-
-    var url = "http://" + ip + ":9020";
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.onerror = function () {
-        alert("Koneksi ke PS4 gagal. Pastikan BINLOADER aktif.");
-    };
-    xhr.onload = function () {
-        alert("GoldHEN berhasil dikirim!\nPS4 akan memproses payload.");
+                // Panggil injector SiSTR0 (masih template)
+                try {
+                    injectWithSiSTR0(payload);
+                } catch (err) {
+                    console.error("[INJECT ERROR]", err);
+                    alert("Injector belum dipasang.\nPayload siap (" + payload.length + " bytes).");
+                }
+            })
+            .catch(function (err) {
+                alert("Gagal memuat GoldHEN: " + err.message);
+            });
     };
 
-    xhr.send(payload);
-}
+    // ================================
+    //  TEMPLATE SiSTR0 INJECTOR
+    // ================================
+    // Ganti isi function ini nanti dengan exploit JS SiSTR0.
+    // Untuk sekarang: hanya debug fallback.
+    window.injectWithSiSTR0 = function (payloadUint8) {
+        var msg = [
+            "Injector SiSTR0 belum dipasang.",
+            "Payload GoldHEN sudah siap (" + payloadUint8.length + " bytes).",
+            "Jika kamu sudah punya injector SiSTR0 untuk FW kamu,",
+            "kirimkan ke saya — nanti saya pasang di sini."
+        ].join("\n");
 
-// ------------------------------------------
-//  Placeholder untu tombol lain (FTP, Cheats)
-// ------------------------------------------
-function fake(name) {
-    alert("Fitur '" + name + "' belum diisi payloadnya.\n© Basten Gaming");
-}
+        alert(msg);
+        console.log("[INJECTOR TEMPLATE] payload bytes:", payloadUint8);
+    };
+
+    // Optional helper untuk tombol:
+    window.loadGoldhenDefault = function () {
+        window.loadGoldhen(DEFAULT_PAYLOAD);
+    };
+
+})();
