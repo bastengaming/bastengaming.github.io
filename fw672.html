@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>6.72 FW – Basten Gaming Host</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="bg-overlay"></div>
+
+<header class="top-nav">
+  <div class="nav-logo">BASTEN GAMING</div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../index.html#firmware">Firmware</a>
+    <a href="../tutorial.html">Tutorial</a>
+  </nav>
+</header>
+
+<main class="main-content">
+<h2 class="section-title">6.72 – Payload Menu</h2>
+<div class="divider"></div>
+
+<div class="fw-grid">
+  <button class="fw-btn" onclick="loadGoldhen('../payloads/goldhen.bin')">
+    GoldHEN (GoldHEN 2.4b18)
+  </button>
+
+  <button class="fw-btn" onclick="fake('ftp')">FTP Server</button>
+  <button class="fw-btn" onclick="fake('app2usb')">App2USB</button>
+  <button class="fw-btn" onclick="fake('cheats')">Cheats (WebRTE)</button>
+  <button class="fw-btn" onclick="fake('disable')">Disable Updates</button>
+  <button class="fw-btn warn" onclick="fake('enable')">Enable Updates</button>
+</div>
+</main>
+
+<footer class="footer">© Basten Gaming</footer>
+
+<script>
+function fake(name){
+  alert("Function '" + name + "' is a placeholder.");
+}
+</script>
+
+<script src="../loader.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+{
+  "name": "BastenGamingHost_FW11_v1.1",
+  "files": [
+    "index.html",
+    "style.css",
+    "tutorial.html",
+    "img/BastenGaming_Wallpaper.png",
+    "img/logo_bastengaming.png",
+    "fw/fw505.html",
+    "fw/fw672.html",
+    "fw/fw702.html",
+    "fw/fw755.html",
+    "fw/fw900.html",
+    "fw/fw1100.html",
+    "fw/fw1202.html"
+  ]
+}

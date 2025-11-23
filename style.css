@@ -1,0 +1,18 @@
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;color:#f2f2f2;background:#050609;min-height:100vh;position:relative}
+.bg-overlay{position:fixed;inset:0;background-image:url('img/BastenGaming_Wallpaper.png');background-size:cover;background-position:center top;opacity:0.35;z-index:-2}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.85),rgba(0,0,0,0.95));z-index:-1}
+.top-nav{position:sticky;top:0;z-index:10;background:linear-gradient(to right,#1a0004,#3c0009);border-bottom:1px solid #ff3045;padding:10px 4%;display:flex;align-items:center;justify-content:space-between;box-shadow:0 3px 10px rgba(0,0,0,0.6)}
+.nav-logo{font-weight:bold;font-size:18px;text-transform:uppercase;letter-spacing:1px;color:#ffdf8a;text-shadow:0 0 7px rgba(255,130,60,0.9)}
+.top-nav nav a{margin-left:18px;font-size:14px;text-decoration:none;color:#f5f5f5;opacity:0.8;transition:0.2s}
+.top-nav nav a:hover{opacity:1;color:#ff8095}
+.hero{padding:40px 4% 20px;text-align:center}
+.hero-title{font-size:30px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;color:#ffe9c4;text-shadow:0 0 10px rgba(255,120,60,0.9),0 0 22px rgba(255,10,10,0.7)}
+.hero-subtitle{font-size:14px;color:#ffb0c0}
+.main-content{padding:10px 4% 40px;max-width:1100px;margin:0 auto}
+.section-title{text-align:center;font-size:20px;margin-top:15px;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;color:#ffdede}
+.divider{width:80%;max-width:600px;height:1px;margin:10px auto 25px;background:linear-gradient(to right,transparent,#ff3045,transparent)}
+.fw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.fw-btn{padding:14px 10px;border-radius:10px;border:1px solid #ff8a9c;background:linear-gradient(to bottom,#ff5b6a 0%,#d7142c 45%,#7a000e 100%);color:#fff;font-size:15px;font-weight:bold;cursor:pointer;text-shadow:0 1px 2px rgba(0,0,0,0.8);box-shadow:0 3px 0 #3b0006,0 0 10px rgba(255,80,80,0.7),inset 0 0 8px rgba(255,220,220,0.25);transition:transform .12s ease,box-shadow .12s ease,filter .12s ease}
+.fw-btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 #2a0004,0 0 16px rgba(255,120,120,0.9),inset 0 0 10px rgba(255,255,255,0.35);filter:brightness(1.05)}
+.fw-btn:active{transform:translateY(1px);box-shadow:0 1px 0 #150002,0 0 4px rgba(255,80,80,0.7),inset 0 0 8px rgba(0,0,0,0.5)}
+.footer{text-align:center;font-size:11px;padding:15px 0 20px;color:#aaaaaa;opacity:0.75}
